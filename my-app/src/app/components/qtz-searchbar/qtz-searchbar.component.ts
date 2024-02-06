@@ -9,7 +9,8 @@ import { QtzFormComponent } from '../qtz-form/qtz-form.component';
   styleUrls: ['./qtz-searchbar.component.css']
 })
 export class QtzSearchbarComponent {
-  
+  searchQuery: string = '';
+
   constructor(private dialog: MatDialog, private dbService: DBService) {}
 
   openForm() {
@@ -23,7 +24,7 @@ export class QtzSearchbarComponent {
     });
   }
 
-  searchUsers(event: any): void {  
-    this.dbService.searchUsers(event);
+  searchUsers(): void {  
+    this.dbService.searchUsers(this.searchQuery);
   }
 }

@@ -1,15 +1,16 @@
 <div class="container">
-    <button mat-raised-button color="primary" (click)="openForm()">Add User</button>
-
-    <form class="form">
+    <form class="form" #searchForm="ngForm">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Search</mat-label>
             <input type="text"
                 placeholder="Enter for search"
                 aria-label="Number"
                 matInput
-                (input)="searchUsers($event.target.value)">
+                [(ngModel)]="searchQuery"
+                name="searchQuery"
+                (ngModelChange)="searchUsers()">
             <mat-icon>search</mat-icon>
         </mat-form-field>
     </form>
+    <button mat-raised-button color="primary" (click)="openForm()">Add User</button>
 </div>
