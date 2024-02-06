@@ -1,0 +1,29 @@
+ <div mat-dialog-title class="title">
+  <h1>User Form</h1>
+ </div>
+
+ <div mat-dialog-content class="content">
+  <div class="row">
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>First Name:</mat-label>
+      <input matInput type="text" id="firstName" name="firstName" placeholder="Ex. Mohammad" [(ngModel)]="formData.firstName">
+    </mat-form-field>
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Second Name:</mat-label>
+      <input matInput type="text" id="secondName" name="secondName" placeholder="Ex. Mohnad" [(ngModel)]="formData.secondName">
+    </mat-form-field>
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Last Name:</mat-label>
+      <input matInput type="text" id="lastName" name="lastName" placeholder="Ex. Hmoudah" [(ngModel)]="formData.lastName">
+    </mat-form-field>
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Age:</mat-label>
+      <input matInput type="number" id="age" name="age" min="18" max="100" placeholder="Ex. 21" [(ngModel)]="formData.age">
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions class="buttons-group">
+  <button mat-raised-button (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onUpdate()">Save</button>
+</div>

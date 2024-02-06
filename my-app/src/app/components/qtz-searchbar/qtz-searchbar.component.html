@@ -1,0 +1,15 @@
+<div class="container">
+    <button mat-raised-button color="primary" (click)="openForm()">Add User</button>
+
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Search</mat-label>
+            <input type="text"
+                placeholder="Enter for search"
+                aria-label="Number"
+                matInput
+                (input)="searchUsers($event.target.value)">
+            <mat-icon>search</mat-icon>
+        </mat-form-field>
+    </form>
+</div>

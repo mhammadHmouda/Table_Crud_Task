@@ -1,0 +1,17 @@
+.buttons-group {
+    padding: 0 15px 10px;
+    display: flex;
+    justify-content: center;
+    button {
+      flex: 0.35;
+    }
+}
+
+h2 {
+    font-weight: bold;
+    color: black;
+}
+
+.question{
+    color: black;
+}
