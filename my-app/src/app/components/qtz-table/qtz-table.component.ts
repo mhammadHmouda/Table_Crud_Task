@@ -26,6 +26,7 @@ export class QtzTableComponent {
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -60,7 +61,7 @@ export class QtzTableComponent {
   private onAddUser(): void {
     this.dataSubscription = this.dbService.getUsersObservable().subscribe(() => {
       if (this.initialized) {
-        this.updateDataSource();
+        this.updateDataSource(this.data);
         this.showSnackbar('User added successfully');
       } else {
         this.initialized = true;
@@ -69,8 +70,8 @@ export class QtzTableComponent {
   }
 
   private onSearchUsers(): void {
-    this.dbService.searchUserObservable().subscribe(query => {
-      if(query !== '' || query !== undefined || query !== null) {
+    this.dataSubscription = this.dbService.searchUserObservable().subscribe(query => {
+      if(query !== '' || query !== null) {
         const filteredUsers = this.data.filter(user => 
           user.firstName.toLowerCase().includes(query.toLowerCase())
           || user.secondName.toLowerCase().includes(query.toLowerCase())
@@ -78,7 +79,7 @@ export class QtzTableComponent {
           || user.age.toString().includes(query.toLowerCase())
         ); 
         
-        this.dataSource.data = filteredUsers;       
+        this.updateDataSource(filteredUsers);       
       }
     })
   }
@@ -94,7 +95,7 @@ export class QtzTableComponent {
       if (result) {
           this.dbService.updateUser(result);
           this.data = this.dbService.getUsers();
-          this.updateDataSource();
+          this.updateDataSource(this.data);
           this.showSnackbar('User updated successfully');
       }
     });
@@ -111,14 +112,14 @@ export class QtzTableComponent {
       if (result === 'confirm') {
         this.dbService.deleteUser(item.id);
         this.data = this.dbService.getUsers();
-        this.updateDataSource();
+        this.updateDataSource(this.data);
         this.showSnackbar('User deleted successfully');
       }
     });
   }
 
-  private updateDataSource() {
-    this.dataSource.data = [...this.data];
+  private updateDataSource(data: User[]) {
+    this.dataSource.data = [...data];
   }
 
   private showSnackbar(message: string) {

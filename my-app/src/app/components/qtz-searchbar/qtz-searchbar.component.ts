@@ -8,6 +8,7 @@ import { QtzFormComponent } from '../qtz-form/qtz-form.component';
   templateUrl: './qtz-searchbar.component.html',
   styleUrls: ['./qtz-searchbar.component.css']
 })
+
 export class QtzSearchbarComponent {
   searchQuery: string = '';
 

@@ -12,6 +12,9 @@
   width: 80%;
   display: flex;
   align-items: center;
+  input {
+    height: 50%;
+  }
 }
 
 #title {

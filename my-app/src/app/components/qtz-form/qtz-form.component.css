@@ -3,10 +3,12 @@
 }
 
 .buttons-group {
-  padding: 0 15px 10px;
+  display: flex;
+  justify-content: center;
   button {
-    flex: 1;
+    flex: 0.35;
   }
+  padding: 0 15px 10px;
 }
 
 .row {
